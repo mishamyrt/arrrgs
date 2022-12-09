@@ -1,4 +1,4 @@
-# Arrrgs
+# Arrrgs [![PyPI version](https://badge.fury.io/py/arrrgs.svg)](https://pypi.org/project/arrrgs/)
 
 <img align="right" width="104px" height="176px"
      alt="Logo"
