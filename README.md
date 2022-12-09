@@ -1,4 +1,4 @@
-# Arrrgs [![PyPI version](https://badge.fury.io/py/arrrgs.svg)](https://pypi.org/project/arrrgs/)
+# Arrrgs [![PyPI version](https://badge.fury.io/py/arrrgs.svg)](https://pypi.org/project/arrrgs/) [![Quality assurance](https://github.com/mishamyrt/arrrgs/actions/workflows/qa.yaml/badge.svg)](https://github.com/mishamyrt/arrrgs/actions/workflows/qa.yaml)
 
 <img align="right" width="104px" height="176px"
      alt="Logo"
