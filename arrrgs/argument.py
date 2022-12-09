@@ -1,4 +1,4 @@
-"""AArgs argument"""
+"""Arrrgs argument"""
 from typing import List
 
 def arg(*name_or_flags: List[str], **kwargs):

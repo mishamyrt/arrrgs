@@ -1,6 +1,6 @@
-"""Basic AArgs example"""
+"""Basic Arrrgs example"""
 from os import getlogin
-from aargs import command, run
+from arrrgs import command, run
 
 @command()
 def hello():

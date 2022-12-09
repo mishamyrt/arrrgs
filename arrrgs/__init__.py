@@ -1,4 +1,4 @@
-"""AArgs library"""
+"""Arrrgs library"""
 import asyncio
 from typing import Any
 from inspect import signature, iscoroutine

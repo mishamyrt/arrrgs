@@ -1,10 +1,20 @@
-# AArgs
+# Arrrgs
+
+<img align="right" width="104px" height="176px"
+     alt="Logo"
+     src="./assets/logo@2x.png">
 
 The library for easily writing feature-rich Python scripts. Uses the built-in `argparse` module for parsing.
 
 * Simple API
 * Automatic async support
 * Small size
+
+## Installing
+
+```sh
+pip install arrrgs
+```
 
 ## Usage
 
@@ -13,7 +23,7 @@ The library for easily writing feature-rich Python scripts. Uses the built-in `a
 To declare a command, write a function and add the `command` decorator to it. To start command processing, call the function `run`.
 
 ```py
-from aargs import command, run
+from arrrgs import command, run
 from os import getlogin
 
 @command()
@@ -25,7 +35,7 @@ if __name__ == "__main__":
     run()
 ```
 
-AArgs will process the command and show the user the result. The help message will be generated from the function documentation.
+Arrrgs will process the command and show the user the result. The help message will be generated from the function documentation.
 
 ```sh
 python examples/basic.py hello --help
@@ -42,7 +52,7 @@ python examples/basic.py hello --help
 To add arguments you need to pass their description to the decorator arguments. The available parameters are the same as [for `add_argument` in `argparse`](https://docs.python.org/3/library/argparse.html#quick-links-for-add-argument).
 
 ```py
-from aargs import command, arg, run
+from arrrgs import command, arg, run
 
 @command(
     arg("name", help="User name"),
@@ -64,7 +74,7 @@ if __name__ == "__main__":
 Sometimes all the teams in an application need a common entity that they interact with. Commands have a context for that. The context value is set when the function `run` is called.
 
 ```py
-from aargs import command, run
+from arrrgs import command, run
 
 class User:
     def __init__(self, name):

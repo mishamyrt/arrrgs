@@ -1,5 +1,5 @@
-"""AArgs arguments example"""
-from aargs import command, run
+"""Arrrgs arguments example"""
+from arrrgs import command, run
 
 class User:
     """Represents user"""

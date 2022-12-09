@@ -1,12 +1,12 @@
-VERSION = 0.0.1
+VERSION = 0.0.2
 DIST_PATH = ./dist
 VENV_PATH = ./venv
 VENV = . $(VENV_PATH)/bin/activate;
 SRC := \
-	$(wildcard aargs/*.py)
+	$(wildcard arrrgs/*.py)
 
 .PHONY: publish
-publish: clean dist/
+publish: clean $(DIST_PATH)
 	git tag "v$(VERSION)"
 	git push --tags
 	$(VENV) python3 -m twine upload --repository pypi dist/* -umishamyrt

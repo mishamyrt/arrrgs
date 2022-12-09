@@ -1,4 +1,4 @@
-"""AArgs command"""
+"""Arrrgs command"""
 from asyncio import iscoroutinefunction
 from .parser import command_subparsers
 

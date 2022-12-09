@@ -1,4 +1,4 @@
-"""AArgs setup script"""
+"""Arrrgs setup script"""
 import setuptools
 
 with open(".version", "r", encoding="utf-8") as fh:
@@ -8,14 +8,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     README = fh.read()
 
 setuptools.setup(
-    name="aargs",
+    name="arrrgs",
     version=VERSION,
     author="Mikhael Khrustik",
     description="The library for easily writing feature-rich Python scripts",
     long_description=README,
     long_description_content_type="text/markdown",
     packages=[
-        'aargs'
+        'arrrgs'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -1,5 +1,5 @@
-"""AArgs arguments example"""
-from aargs import command, arg, run
+"""Arrrgs arguments example"""
+from arrrgs import command, arg, run
 
 @command(
     arg("name", help="User name"),
