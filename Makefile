@@ -28,6 +28,10 @@ install: $(DIST_PATH)
 install-venv: $(DIST_PATH)
 	$(VENV) pip install .
 
+.PHONY: lint
+lint:
+	$(VENV) pylint $(SRC)
+
 configure: requirements.txt
 	rm -rf $(VENV_PATH)
 	make $(VENV_PATH)
