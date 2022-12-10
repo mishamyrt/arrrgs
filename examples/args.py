@@ -1,9 +1,12 @@
 """Arrrgs arguments example"""
-from arrrgs import command, arg, run
+from arrrgs import command, arg, run, global_args
+
+global_args(
+    arg("--rage", "-r", action='store_true', help="Rage mod")
+)
 
 @command(
-    arg("name", help="User name"),
-    arg("--rage", "-r", action='store_true', help="Rage mod"),
+    arg("name", help="User name")
 )
 def hello(args):
     """Prints hello message to current user"""

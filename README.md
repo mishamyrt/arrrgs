@@ -49,14 +49,17 @@ python examples/basic.py hello --help
 
 ### Arguments
 
-To add arguments you need to pass their description to the decorator arguments. The available parameters are the same as [for `add_argument` in `argparse`](https://docs.python.org/3/library/argparse.html#quick-links-for-add-argument).
+To add arguments for command you need to pass their description to the decorator arguments. If you need global arguments, pass them to `global_args` function. The available parameters of `arg` are the same as [for `add_argument` in `argparse`](https://docs.python.org/3/library/argparse.html#quick-links-for-add-argument).
 
 ```py
-from arrrgs import command, arg, run
+from arrrgs import command, arg, run, global_args
+
+global_args(
+    arg("--rage", "-r", action='store_true', help="Rage mod")
+)
 
 @command(
-    arg("name", help="User name"),
-    arg("--rage", "-r", action='store_true', help="Rage mod"),
+    arg("name", help="User name")
 )
 def hello(args):
     """Prints hello message to current user"""

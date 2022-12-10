@@ -4,7 +4,7 @@ from typing import Any
 from inspect import signature, iscoroutine
 from .parser import cli
 from .command import command
-from .argument import arg
+from .arguments import arg, global_args
 
 def run(context: Any = None):
     """Runs application"""
