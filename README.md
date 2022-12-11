@@ -47,6 +47,23 @@ python examples/basic.py hello --help
 #   -h, --help  show this help message and exit
 ```
 
+### Custom command absence handler
+
+Use the `no_command` decorator to set up a no-command handler. The same rules apply to this function as to normal command handlers except that it cannot have its own arguments.
+
+```py
+from arrrgs import run, no_command
+
+@no_command()
+def print_hello():
+    """Prints hello message to current user"""
+    print("Hello, user")
+
+if __name__ == "__main__":
+    run()
+```
+
+
 ### Arguments
 
 To add arguments for command you need to pass their description to the decorator arguments. If you need global arguments, pass them to `global_args` function. The available parameters of `arg` are the same as [for `add_argument` in `argparse`](https://docs.python.org/3/library/argparse.html#quick-links-for-add-argument).
