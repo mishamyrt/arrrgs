@@ -16,6 +16,10 @@ def hello(_, context):
     """Prints hello message to current user"""
     print(f"Hello, {context.get_name()}")
 
+async def prepare(args):
+    """Creates app context"""
+    context = User("Mikhael")
+    return args, context
+
 if __name__ == "__main__":
-    user = User("Mikhael")
-    run(user)
+    run(prepare=prepare)
