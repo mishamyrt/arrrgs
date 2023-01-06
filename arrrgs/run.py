@@ -34,8 +34,7 @@ async def async_run(ctx: Any = None, prepare: Union[ContextPreparer, None] = Non
             log.info("no_command handler is not found. Printing help")
             parser.print_help()
             return
-        else:
-            handler = parsed_args.no_command_handler
+        handler = parsed_args.no_command_handler
     else:
         handler = parsed_args.func
     await _run_safe(handler, parsed_args, ctx)
@@ -57,5 +56,4 @@ async def _run_safe(handler: Callable, parsed_args: Dict[str, Any], ctx: Any):
 async def _run_async_safe(handler: Callable, args: List[any]):
     if asyncio.iscoroutinefunction(handler):
         return await handler(*args)
-    else:
-        return handler(*args)
+    return handler(*args)
