@@ -1,4 +1,4 @@
-"""AArg argument parser"""
+"""Arrrgs argument parser"""
 from argparse import ArgumentParser
 
 parser = ArgumentParser()
