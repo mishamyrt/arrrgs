@@ -2,7 +2,7 @@
 from .parser import command_subparsers, parser
 
 def command(*args, parent=command_subparsers):
-    """Decorator to define a new subcommand"""
+    """Decorator to define a new command"""
     def decorator(func):
         cmd_parser = parent.add_parser(func.__name__, description=func.__doc__)
         for arg in list(args):
