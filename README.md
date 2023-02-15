@@ -124,3 +124,14 @@ async def hello():
     """Prints hello message to current user"""
     print("Hello, async user")
 ```
+
+### Custom command name
+
+A situation may arise where you have to name a command after a built-in function or type, e.g. `list`. To specify a command name other than the function name, use the `name` parameter.
+
+```py
+@command(name="list")
+def list_numbers():
+    """Prints list of numbers"""
+    print("1, 2, 3")
+```

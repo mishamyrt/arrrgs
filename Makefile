@@ -1,4 +1,4 @@
-VERSION = 0.0.4
+VERSION = 0.0.5
 DIST_PATH = ./dist
 VENV_PATH = ./venv
 VENV = . $(VENV_PATH)/bin/activate;
@@ -26,7 +26,7 @@ install: $(DIST_PATH)
 
 .PHONY: install-venv
 install-venv: $(DIST_PATH)
-	$(VENV) pip install .
+	$(VENV) pip install --use-feature=in-tree-build .
 
 .PHONY: lint
 lint:
