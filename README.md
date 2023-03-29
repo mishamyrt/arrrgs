@@ -49,12 +49,12 @@ python examples/basic.py hello --help
 
 ### Custom command absence handler
 
-Use the `no_command` decorator to set up a no-command handler. The same rules apply to this function as to normal command handlers except that it cannot have its own arguments.
+Use the `root_command` decorator to set up a no-command handler. The same rules apply to this function as to normal command handlers except that it cannot have its own arguments.
 
 ```py
-from arrrgs import run, no_command
+from arrrgs import run, root_command
 
-@no_command()
+@root_command()
 def print_hello():
     """Prints hello message to current user"""
     print("Hello, user")

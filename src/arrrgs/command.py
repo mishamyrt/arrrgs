@@ -15,7 +15,7 @@ def command(*args, name:str=None, parent=command_subparsers):
         cmd_parser.set_defaults(func=func)
     return decorator
 
-def no_command():
+def root_command():
     """Decorator to define a command absence handler"""
     def decorator(func):
         parser.set_defaults(no_command_handler=func)

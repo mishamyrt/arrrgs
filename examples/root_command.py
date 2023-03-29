@@ -1,7 +1,8 @@
 """Arrrgs custom command absence handler"""
-from arrrgs import run, no_command
+from arrrgs import root_command, run
 
-@no_command()
+
+@root_command()
 def print_hello():
     """Prints hello message to current user"""
     print("Hello, user")

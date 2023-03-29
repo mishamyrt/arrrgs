@@ -25,7 +25,7 @@ install: build
 
 .PHONY: install-venv
 install-venv: build
-	$(VENV) pip install --use-feature=in-tree-build .
+	$(VENV) pip install .
 
 .PHONY: lint
 lint:
