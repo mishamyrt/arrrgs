@@ -8,6 +8,7 @@ authors = [
     {name = "Mikhael Khrustik", email = "misha@myrt.co"},
 ]
 description = "The library for easily writing feature-rich Python scripts"
+readme = "README.md"
 requires-python = ">=3.7"
 keywords = ["cli", "command-line-tool"]
 license = {text = "MIT"}
@@ -16,11 +17,10 @@ classifiers = [
     "License :: OSI Approved :: MIT License"
 ]
 dependencies = ["argparse"]
-dynamic = ["version", "readme"]
+dynamic = ["version"]
 
 [tool.setuptools.dynamic]
 version = {file = [".version"]}
-readme = {file = ["README.md"]}
 
 [tool.ruff]
 select = [

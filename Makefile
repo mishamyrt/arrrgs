@@ -5,7 +5,9 @@ SRC := \
 	$(wildcard src/arrrgs/*.py)
 
 .PHONY: publish
-publish: clean $(DIST_PATH)
+publish:
+	make clean
+	make build
 	git tag "v$(VERSION)"
 	git push --tags
 	$(VENV) python3 -m twine upload --repository pypi dist/* -umishamyrt
