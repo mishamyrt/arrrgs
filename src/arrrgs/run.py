@@ -5,6 +5,7 @@ from inspect import signature
 from logging import DEBUG
 from typing import Any, Callable, Dict, List, Tuple, Union
 
+from .arguments import add_args
 from .log import get_logger
 from .parser import parser
 
@@ -18,27 +19,31 @@ def run(ctx: Any = None, prepare: Union[ContextPreparer, None] = None, debug=Fal
 
 async def async_run(ctx: Any = None, prepare: Union[ContextPreparer, None] = None, debug=False):
     """Runs application asynchronously"""
-    parsed_args = parser.parse_args()
+    args, argv = parser.parse_known_args()
     if debug:
         log.setLevel(DEBUG)
         log.info("Running in debug mode")
-    log.info(parsed_args)
-    if prepare is not None:
-        log.info("Running 'prepare' callback")
-        (prepared_args, prepared_context) = await _run_safe(prepare, parsed_args, ctx)
-        # Updating values
-        parsed_args = prepared_args
-        ctx = prepared_context
     handler: Callable
-    if parsed_args.cmd is None:
-        if parsed_args.no_command_handler is None:
-            log.info("no_command handler is not found. Printing help")
+    if args.cmd is None:
+        if args.root_command_handler is None:
+            log.info("root command handler is not found. Printing help")
             parser.print_help()
             return
-        handler = parsed_args.no_command_handler
+        add_args(parser, args.root_command_args)
+        args = parser.parse_args()
+        handler = args.root_command_handler
     else:
-        handler = parsed_args.func
-    await _run_safe(handler, parsed_args, ctx)
+        if argv:
+            parser.error(f"unrecognized arguments: {' '.join(argv)}")
+        handler = args.func
+        if prepare is not None:
+            log.info("Running 'prepare' callback")
+            (prepared_args, prepared_context) = await _run_safe(prepare, args, ctx)
+            # Updating values
+            args = prepared_args
+            ctx = prepared_context
+    log.info(args)
+    await _run_safe(handler, args, ctx)
 
 def _prepare_args(handler: Callable, parsed_args: Namespace, ctx: Any) -> List[str]:
     sig = signature(handler)

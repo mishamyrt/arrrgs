@@ -1,4 +1,5 @@
 """Arrrgs command"""
+from .arguments import add_args
 from .parser import command_subparsers, parser
 
 
@@ -10,13 +11,15 @@ def command(*args, name:str=None, parent=command_subparsers):
         else:
             command_name = func.__name__
         cmd_parser = parent.add_parser(command_name, description=func.__doc__)
-        for arg in list(args):
-            cmd_parser.add_argument(*arg[0], **arg[1])
+        add_args(cmd_parser, args)
         cmd_parser.set_defaults(func=func)
     return decorator
 
-def root_command():
+def root_command(*args):
     """Decorator to define a command absence handler"""
     def decorator(func):
-        parser.set_defaults(no_command_handler=func)
+        parser.set_defaults(
+            root_command_handler=func,
+            root_command_args=list(args),
+        )
     return decorator
