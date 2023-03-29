@@ -1,11 +1,12 @@
 """Arrrgs starter"""
 import asyncio
-from logging import DEBUG
 from argparse import Namespace
-from typing import Any, Callable, List, Dict, Tuple, Union
 from inspect import signature
-from .parser import parser
+from logging import DEBUG
+from typing import Any, Callable, Dict, List, Tuple, Union
+
 from .log import get_logger
+from .parser import parser
 
 log = get_logger("arrrgs.run")
 

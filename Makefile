@@ -1,9 +1,8 @@
-VERSION = 0.0.5
-DIST_PATH = ./dist
+VERSION = 2.0.0
 VENV_PATH = ./venv
 VENV = . $(VENV_PATH)/bin/activate;
 SRC := \
-	$(wildcard arrrgs/*.py)
+	$(wildcard src/arrrgs/*.py)
 
 .PHONY: publish
 publish: clean $(DIST_PATH)
@@ -18,19 +17,20 @@ clean:
 	rm -rf dist
 
 .PHONY: build
-build: $(DIST_PATH)
+build: build
 
 .PHONY: install
-install: $(DIST_PATH)
+install: build
 	pip3 install .
 
 .PHONY: install-venv
-install-venv: $(DIST_PATH)
+install-venv: build
 	$(VENV) pip install --use-feature=in-tree-build .
 
 .PHONY: lint
 lint:
 	$(VENV) pylint $(SRC)
+	$(VENV) ruff $(SRC)
 
 configure: requirements.txt
 	rm -rf $(VENV_PATH)
@@ -45,6 +45,6 @@ $(CONFIG_PATH): config.json
 	rm -f $(CONFIG_PATH)
 	cp config.json $(CONFIG_PATH)
 
-$(DIST_PATH): $(VENV_PATH) $(SRC)
-	echo $(VERSION) > .version
-	$(VENV) python setup.py sdist bdist_wheel
+build: $(VENV_PATH) $(SRC)
+	echo "$(VERSION)" > .version
+	$(VENV) python3 -m build

@@ -1,5 +1,6 @@
 """Arrrgs log utils"""
-from logging import getLogger, Formatter, StreamHandler, Logger
+from logging import Formatter, Logger, StreamHandler, getLogger
+
 
 def get_logger(name: str) -> Logger:
     """Return a logger with the specified name."""

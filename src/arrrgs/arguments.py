@@ -1,6 +1,8 @@
 """Arrrgs arguments"""
-from typing import Tuple, Dict, Any
+from typing import Any, Dict, Tuple
+
 from .parser import parser
+
 
 def arg(*name_or_flags: Tuple[str, ...], **kwargs: Dict[str, Any]) -> None:
     """Convenience function to properly format arguments

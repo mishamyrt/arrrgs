@@ -1,6 +1,7 @@
 """Arrrgs command"""
 from .parser import command_subparsers, parser
 
+
 def command(*args, name:str=None, parent=command_subparsers):
     """Decorator to define a new command"""
     def decorator(func):

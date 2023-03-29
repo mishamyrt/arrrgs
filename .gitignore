@@ -4,3 +4,4 @@
 __pycache__
 /venv/
 .version
+.ruff_cache
