@@ -15,9 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License"
 ]
-dependencies = [
-    "argparse",
-]
+dependencies = ["argparse"]
 dynamic = ["version", "readme"]
 
 [tool.setuptools.dynamic]
