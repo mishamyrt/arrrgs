@@ -1,6 +1,8 @@
 """Basic Arrrgs example"""
 from os import getlogin
+
 from arrrgs import command, run
+
 
 @command()
 def hello():

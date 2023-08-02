@@ -1,6 +1,7 @@
 """Arrrgs arguments example"""
 from arrrgs import command, run
 
+
 class User:
     """Represents user"""
 

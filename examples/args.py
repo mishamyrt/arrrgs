@@ -1,5 +1,5 @@
 """Arrrgs arguments example"""
-from arrrgs import command, arg, run, global_args
+from arrrgs import arg, command, global_args, run
 
 global_args(
     arg("--rage", "-r", action='store_true', help="Rage mod")

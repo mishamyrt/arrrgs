@@ -1,6 +1,8 @@
 """A script that prints out information about the system"""
-from os import getlogin, getcwd, getenv
-from arrrgs import command, arg, run
+from os import getcwd, getenv, getlogin
+
+from arrrgs import arg, command, run
+
 
 @command()
 def user():
