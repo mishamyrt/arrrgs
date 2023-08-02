@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Arrrgs root command handler"""
-from arrrgs import arg, command, root_command, run
+from arrrgs import arg, command, run
 
 
-@root_command(
-    arg("--rage", "-r", action='store_true', help="Rage mod")
+@command(
+    arg("--rage", "-r", action='store_true', help="Rage mod"),
+    root=True
 )
 def hello(args):
     """Prints hello message to current user"""
