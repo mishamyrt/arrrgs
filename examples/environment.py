@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """A script that prints out information about the system"""
 from os import getcwd, getenv, getlogin
 

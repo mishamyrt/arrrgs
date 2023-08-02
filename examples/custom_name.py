@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Basic Arrrgs example"""
 from arrrgs import command, run
 

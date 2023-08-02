@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Arrrgs arguments example"""
 from arrrgs import arg, command, global_args, run
 
