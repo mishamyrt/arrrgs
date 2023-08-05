@@ -7,17 +7,21 @@ from arrrgs import arg, command, run
     arg("--rage", "-r", action='store_true', help="Rage mod"),
     root=True
 )
-def hello(args):
+def hello(args, name: str):
     """Prints hello message to current user"""
-    message = "Hello, user"
+    message = f"Hello, {name}"
     if args.rage:
         message = message.upper()
     print(message)
 
 @command()
-def bye():
+def bye(_, name: str):
     """Prints bye message to current user"""
-    print("Bye, user")
+    print(f"Bye, {name}")
+
+async def prepare(args):
+    """Creates app context"""
+    return args, "Mikhael"
 
 if __name__ == "__main__":
-    run(debug=True)
+    run(prepare=prepare)

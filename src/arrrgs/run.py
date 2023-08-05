@@ -23,7 +23,15 @@ async def async_run(ctx: Any = None, prepare: Union[ContextPreparer, None] = Non
     if debug:
         log.setLevel(DEBUG)
         log.info("Running in debug mode")
+    if argv:
+        parser.error(f"unrecognized arguments: {' '.join(argv)}")
     handler: Callable
+    if prepare is not None:
+        log.info("Running 'prepare' callback")
+        (prepared_args, prepared_context) = await _run_safe(prepare, args, ctx)
+        # Updating values
+        args = prepared_args
+        ctx = prepared_context
     if args.cmd is None:
         if args.root_command_handler is None:
             log.info("root command handler is not found. Printing help")
@@ -33,15 +41,7 @@ async def async_run(ctx: Any = None, prepare: Union[ContextPreparer, None] = Non
         args = parser.parse_args()
         handler = args.root_command_handler
     else:
-        if argv:
-            parser.error(f"unrecognized arguments: {' '.join(argv)}")
         handler = args.func
-        if prepare is not None:
-            log.info("Running 'prepare' callback")
-            (prepared_args, prepared_context) = await _run_safe(prepare, args, ctx)
-            # Updating values
-            args = prepared_args
-            ctx = prepared_context
     log.info(args)
     await _run_safe(handler, args, ctx)
 
