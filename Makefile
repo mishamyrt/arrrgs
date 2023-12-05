@@ -19,15 +19,17 @@ clean:
 	rm -rf dist
 
 .PHONY: build
-build: build
+build:
+	echo "$(VERSION)" > .version
+	$(VENV) python -m build
 
 .PHONY: install
 install: build
-	pip3 install .
+	$(VENV) pip3 install .
 
-.PHONY: install-venv
-install-venv: build
-	$(VENV) pip install .
+.PHONY: install-system
+install-system: build
+	pip3 install .
 
 .PHONY: lint
 lint:
@@ -46,7 +48,3 @@ $(CONFIG_PATH): config.json
 	mkdir -p $(CONFIG_DIR)
 	rm -f $(CONFIG_PATH)
 	cp config.json $(CONFIG_PATH)
-
-build: $(VENV_PATH) $(SRC)
-	echo "$(VERSION)" > .version
-	$(VENV) python3 -m build
