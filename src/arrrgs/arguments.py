@@ -1,14 +1,17 @@
 """Arrrgs arguments"""
 from argparse import ArgumentParser
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, List, Tuple
 
 from .parser import parser
 
 
-def arg(*name_or_flags: Tuple[str, ...], **kwargs: Dict[str, Any]) -> None:
+def arg(
+    *name_or_flags: Tuple[str, ...],
+    **kwargs: Dict[str, Any]
+) -> Tuple[List[str], Dict[str, Any]]:
     """Convenience function to properly format arguments
     to pass to the subcommand decorator."""
-    return (list(name_or_flags), kwargs)
+    return list(name_or_flags), kwargs
 
 def global_args(*args: Tuple[str, ...]) -> None:
     """Adds global arguments to app"""
