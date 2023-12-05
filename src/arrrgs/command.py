@@ -23,14 +23,14 @@ def register_handler(
 
 def command(
         *args,
-        name:str=None,
-        root=False,
-        parent=command_subparsers,
-        root_parser=parser,
-        aliases:List[str]=None
+        name: str = None,
+        root = False,
+        parent = command_subparsers,
+        root_parser = parser,
+        aliases: List[str] = None
     ):
     """Decorator to define a new command"""
-    def decorator(func):
+    def decorator(func: Callable):
         if root:
             root_parser.set_defaults(
                 root_command_handler=func,
