@@ -1,4 +1,4 @@
-VERSION = 3.0.1
+VERSION = 3.1.0
 VENV_PATH = ./venv
 VENV = . $(VENV_PATH)/bin/activate;
 SRC := \
