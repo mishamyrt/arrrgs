@@ -6,6 +6,12 @@ from arrrgs import command, run
 class User:
     """Represents user"""
 
+    def say_hello(self):
+        print(f"Hello, {self._name}!")
+
+    def say_bye(self):
+        print(f"Bye, {self._name}!")
+
     def __init__(self, name):
         self._name = name
 
@@ -14,14 +20,20 @@ class User:
         return self._name
 
 @command()
-def hello(_, context):
+def hello(_, user: User):
     """Prints hello message to current user"""
-    print(f"Hello, {context.get_name()}")
+    user.say_hello()
+
+async def say_bye(_, user: User):
+    """Prints bye message to current user"""
+    user.say_bye()
 
 async def prepare(args):
     """Creates app context"""
-    context = User("Mikhael")
-    return args, context
+    return args, User("Mikhael")
 
 if __name__ == "__main__":
-    run(prepare=prepare)
+    run(
+        prepare=prepare,
+        after=say_bye
+    )

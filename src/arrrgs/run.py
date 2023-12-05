@@ -3,7 +3,7 @@ import asyncio
 from argparse import Namespace
 from inspect import signature
 from logging import DEBUG
-from typing import Any, Callable, Dict, List, Tuple, Union
+from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 from .arguments import add_args
 from .log import get_logger
@@ -13,11 +13,21 @@ log = get_logger("arrrgs.run")
 
 ContextPreparer = Callable[[Namespace, Any], Tuple[Namespace, Any]]
 
-def run(ctx: Any = None, prepare: Union[ContextPreparer, None] = None, debug=False):
+def run(
+    ctx: Any = None,
+    prepare: Optional[ContextPreparer] = None,
+    after: Optional[Callable] = None,
+    debug=False
+):
     """Runs application"""
-    asyncio.run(async_run(ctx, prepare, debug))
+    asyncio.run(async_run(ctx, prepare, after, debug))
 
-async def async_run(ctx: Any = None, prepare: Union[ContextPreparer, None] = None, debug=False):
+async def async_run(
+    ctx: Any = None,
+    prepare: Union[ContextPreparer, None] = None,
+    after: Optional[Callable] = None,
+    debug = False,
+):
     """Runs application asynchronously"""
     args, argv = parser.parse_known_args()
     if debug:
@@ -44,6 +54,8 @@ async def async_run(ctx: Any = None, prepare: Union[ContextPreparer, None] = Non
         handler = args.func
     log.info(args)
     await _run_safe(handler, args, ctx)
+    if after is not None:
+        await _run_safe(after, args, ctx)
 
 def _prepare_args(handler: Callable, parsed_args: Namespace, ctx: Any) -> List[str]:
     sig = signature(handler)
